@@ -42,6 +42,15 @@ public class Astronaut {
         ypos = ypos + dy;
  
     }
+    public void moveleft() {
+        xpos = xpos - dx;
+        ypos = ypos - dy;
+    }
+
+    public void movedown() {
+        dy=1;
+        ypos = ypos+dy;
+    }
 }
 
 
