@@ -67,6 +67,8 @@ public class BasicGameApp implements Runnable {
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
 		astro = new Astronaut(10,100);
 		michael = new Astronaut(700,300);
+		michael.dx=0;
+		michael.dy=15;
 
 
 	}// BasicGameApp()
@@ -87,6 +89,7 @@ public class BasicGameApp implements Runnable {
          moveThings();  //move all the game objects
          render();  // paint the graphics
          pause(20); // sleep for 10 ms
+
 		}
 	}
 
@@ -95,7 +98,11 @@ public class BasicGameApp implements Runnable {
 	{
       //calls the move( ) code in the objects
 		astro.move();
-		michael.movedown();
+	///	michael.movedown();
+		astro.bounce();
+		michael.bounce();
+		//astro.wrap();
+		//michael.wrap();
 	}
 
 
