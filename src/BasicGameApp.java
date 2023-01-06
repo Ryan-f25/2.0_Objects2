@@ -39,11 +39,15 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+	public Image background;
+
+	public Image ClimatePic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
 	private Astronaut michael;
+	private Astronaut charles;
 
 
    // Main method definition
@@ -65,10 +69,15 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
+		background = Toolkit.getDefaultToolkit().getImage("Scooby-Doo.jpg"); //load the picture
+		ClimatePic = Toolkit.getDefaultToolkit().getImage("Climatepic.jpg");
 		astro = new Astronaut(10,100);
 		michael = new Astronaut(700,300);
+		charles = new Astronaut(200,200);
 		michael.dx=0;
 		michael.dy=15;
+		charles.dx=9;
+		charles.dy=12;
 
 
 	}// BasicGameApp()
@@ -101,6 +110,7 @@ public class BasicGameApp implements Runnable {
 	///	michael.movedown();
 		astro.bounce();
 		michael.bounce();
+		charles.bounce();
 		//astro.wrap();
 		//michael.wrap();
 	}
@@ -154,8 +164,15 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the astronaut
+		g.drawImage(background, 0, 0 , 1000, 700, null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-		g.drawImage(astroPic, michael.xpos, michael.ypos, michael.width, michael.height, null);
+		g.drawImage(ClimatePic, michael.xpos, michael.ypos, michael.width, michael.height, null);
+		g.drawImage(astroPic, charles.xpos, charles.ypos, charles.width, charles.height, null);
+
+		g.draw(new Rectangle(astro.xpos, astro.ypos, astro.width, astro.height));
+		g.draw(new Rectangle(michael.xpos, michael.ypos, michael.width, michael.height));
+		g.draw(new Rectangle(charles.xpos, charles.ypos, charles.width, charles.height));
+
 
 		g.dispose();
 
