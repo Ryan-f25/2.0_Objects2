@@ -80,6 +80,10 @@ public class BasicGameApp implements Runnable {
 		charles.dy=12;
 
 
+
+
+
+
 	}// BasicGameApp()
 
    
@@ -102,7 +106,6 @@ public class BasicGameApp implements Runnable {
 		}
 	}
 
-
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
@@ -113,6 +116,7 @@ public class BasicGameApp implements Runnable {
 		charles.bounce();
 		//astro.wrap();
 		//michael.wrap();
+		crash();
 	}
 
 
@@ -156,6 +160,20 @@ public class BasicGameApp implements Runnable {
       System.out.println("DONE graphic setup");
    
    }
+
+
+	public void crash()
+	{
+		if(astro.rec.intersects(michael.rec));
+		{
+			System.out.println("crash");
+			astro.dx = -1*astro.dx;
+			astro.dy = -1*astro.dy;
+			michael.dx = -1*michael.dx;
+			michael.dy = -1*michael.dy;
+
+		}
+	}
 
 
 	//paints things on the screen using bufferStrategy
