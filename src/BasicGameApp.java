@@ -72,12 +72,12 @@ public class BasicGameApp implements Runnable {
 		background = Toolkit.getDefaultToolkit().getImage("Scooby-Doo.jpg"); //load the picture
 		ClimatePic = Toolkit.getDefaultToolkit().getImage("Climatepic.jpg");
 		astro = new Astronaut(10,100);
-		michael = new Astronaut(700,300);
-		charles = new Astronaut(200,200);
+		michael = new Astronaut(400,400);
+		charles = new Astronaut(300,100);
 		michael.dx=0;
-		michael.dy=15;
-		charles.dx=9;
-		charles.dy=12;
+		michael.dy=4;
+		charles.dx=5;
+		charles.dy=5;
 
 
 
@@ -117,6 +117,8 @@ public class BasicGameApp implements Runnable {
 		//astro.wrap();
 		//michael.wrap();
 		crash();
+		change();
+		size();
 	}
 
 
@@ -164,7 +166,9 @@ public class BasicGameApp implements Runnable {
 
 	public void crash()
 	{
-		if(astro.rec.intersects(michael.rec));
+		System.out.println("astro" + astro.rec.x+ "" + astro.rec.y);
+		System.out.println("michael" + michael.rec.x+ "" + michael.rec.y);
+		if(astro.rec.intersects(michael.rec))
 		{
 			System.out.println("crash");
 			astro.dx = -1*astro.dx;
@@ -172,6 +176,28 @@ public class BasicGameApp implements Runnable {
 			michael.dx = -1*michael.dx;
 			michael.dy = -1*michael.dy;
 
+		}
+	}
+
+	public void change()
+	{
+		if(michael.rec.intersects(charles.rec))
+		{
+			michael.dx = 1 + michael.dx;
+			michael.dy = 1 + michael.dy;
+			charles.dx = 1 + charles.dx;
+			charles.dy = 1 + charles.dy;
+		}
+	}
+
+	public void size()
+	{
+		if(astro.rec.intersects(charles.rec))
+		{
+			astro.height = 2* astro.height;
+			astro.width = 2*astro.width;
+			charles.height = 2*charles.height;
+			charles.width = 2*charles.width;
 		}
 	}
 
