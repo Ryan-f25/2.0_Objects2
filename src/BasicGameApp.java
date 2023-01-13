@@ -175,6 +175,7 @@ public class BasicGameApp implements Runnable {
 			astro.dy = -1*astro.dy;
 			michael.dx = -1*michael.dx;
 			michael.dy = -1*michael.dy;
+			michael.isAlive = false;
 
 		}
 	}
@@ -207,14 +208,19 @@ public class BasicGameApp implements Runnable {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
-      //draw the image of the astronaut
-		g.drawImage(background, 0, 0 , 1000, 700, null);
+		//draw the image of the astronaut
+		g.drawImage(background, 0, 0, 1000, 700, null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+		if (michael.isAlive == true)
+		{
 		g.drawImage(ClimatePic, michael.xpos, michael.ypos, michael.width, michael.height, null);
+		g.draw(new Rectangle(michael.xpos, michael.ypos, michael.width, michael.height));
+		}
+
 		g.drawImage(astroPic, charles.xpos, charles.ypos, charles.width, charles.height, null);
 
 		g.draw(new Rectangle(astro.xpos, astro.ypos, astro.width, astro.height));
-		g.draw(new Rectangle(michael.xpos, michael.ypos, michael.width, michael.height));
+
 		g.draw(new Rectangle(charles.xpos, charles.ypos, charles.width, charles.height));
 
 
